@@ -10,7 +10,16 @@
 
 @class LKLinkPreview;
 
+
+
+FOUNDATION_EXPORT NSString *const LKLinkPreviewKitErrorDomain;
+
+enum {
+    LKLinkPreviewKitErrorBadURL = 100
+};
+
 typedef void (^LKLinkPreviewKitHandler)(LKLinkPreview *preview, NSError *error);
+
 
 
 @interface LKLinkPreviewKit : NSObject

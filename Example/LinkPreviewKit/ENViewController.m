@@ -9,10 +9,12 @@
 #import "ENViewController.h"
 
 #import "LKLinkPreviewKit.h"
+#import "LKLinkPreview.h"
 
 @interface ENViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextField *urlTextField;
+@property (weak, nonatomic) IBOutlet UITextView *previewTextView;
 
 @end
 
@@ -43,11 +45,10 @@
     
     [LKLinkPreviewKit linkPreviewFromURL:URL completionHandler:^(LKLinkPreview *preview, NSError *error) {
         if (preview && ! error) {
-            NSLog(@"%s HEY! %@", __PRETTY_FUNCTION__, preview);
-            
+            self.previewTextView.text = [preview description];
         }
         else {
-            NSLog(@"%s Erorr!", __PRETTY_FUNCTION__);
+            self.previewTextView.text = @"Error";
         }
     }];
 }

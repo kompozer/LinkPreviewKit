@@ -15,7 +15,7 @@
 NSString *const LKLinkPreviewKitErrorDomain = @"LKLinkPreviewKitErrorDomain";
 
 
-static NSString *const LKHTMLElementMeta = @"";
+static NSString *const LKHTMLElementMeta = @"meta";
 static NSString *const LKHTMLAttributeContent = @"content";
 static NSString *const LKHTMLAttributeProperty = @"property";
 
@@ -48,9 +48,10 @@ static NSString *const LKHTMLAttributeProperty = @"property";
         }
         HTMLDocument *document = [HTMLDocument documentWithData:data
                                           contentTypeHeader:contentType];
-        
         LKLinkPreviewKit *previewKit = [LKLinkPreviewKit new];
-        [previewKit linkPreviewFromHTMLDocument:document completionHandler:handler];
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            [previewKit linkPreviewFromHTMLDocument:document completionHandler:handler];
+        });
     }] resume];
 }
 
@@ -82,6 +83,10 @@ static NSString *const LKHTMLAttributeProperty = @"property";
         else if ([property isEqualToString:@"og:description"]) {
             preview.linkDescription = content;
         }
+    }
+    
+    if (handler) {
+        handler(preview, nil);
     }
 }
 

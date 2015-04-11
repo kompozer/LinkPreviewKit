@@ -1,0 +1,12 @@
+source 'https://github.com/CocoaPods/Specs.git'
+
+target 'LinkPreviewKit', :exclusive => true do
+  pod "LinkPreviewKit", :path => "../"
+end
+
+target 'Tests', :exclusive => true do
+  pod "LinkPreviewKit", :path => "../"
+
+  pod 'Specta'
+  pod 'Expecta'
+end

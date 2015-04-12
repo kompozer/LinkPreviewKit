@@ -1,6 +1,5 @@
 # LinkPreviewKit
 
-[![CI Status](http://img.shields.io/travis/Andreas Kompanez/LinkPreviewKit.svg?style=flat)](https://travis-ci.org/Andreas Kompanez/LinkPreviewKit)
 [![Version](https://img.shields.io/cocoapods/v/LinkPreviewKit.svg?style=flat)](http://cocoapods.org/pods/LinkPreviewKit)
 [![License](https://img.shields.io/cocoapods/l/LinkPreviewKit.svg?style=flat)](http://cocoapods.org/pods/LinkPreviewKit)
 [![Platform](https://img.shields.io/cocoapods/p/LinkPreviewKit.svg?style=flat)](http://cocoapods.org/pods/LinkPreviewKit)
@@ -22,7 +21,7 @@ pod "LinkPreviewKit"
 
 ## Author
 
-Andreas Kompanez, andreas.kompanez@wearezeta.com
+Andreas Kompanez, [@kompozer](https://twitter.com/kompozer)
 
 ## License
 

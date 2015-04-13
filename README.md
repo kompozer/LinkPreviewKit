@@ -4,6 +4,9 @@
 [![License](https://img.shields.io/cocoapods/l/LinkPreviewKit.svg?style=flat)](http://cocoapods.org/pods/LinkPreviewKit)
 [![Platform](https://img.shields.io/cocoapods/p/LinkPreviewKit.svg?style=flat)](http://cocoapods.org/pods/LinkPreviewKit)
 
+
+Library to fetch the social media meta tag information from a website URL.
+
 ## Usage
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.

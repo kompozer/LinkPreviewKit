@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
   s.version          = "0.3.0"
   s.summary          = "Link preview kit"
   s.description      = <<-DESC
-                       Library to fetch the social media meta tag information for a given URL. See [http://moz.com/blog/meta-data-templates-123](http://moz.com/blog/meta-data-templates-123)
+                       Library to fetch the social media meta tag information from a website URL. See [http://moz.com/blog/meta-data-templates-123](http://moz.com/blog/meta-data-templates-123)
                        DESC
   s.homepage         = "https://github.com/kompozer/LinkPreviewKit"
   # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"

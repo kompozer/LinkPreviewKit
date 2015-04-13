@@ -8,22 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@class LKLinkPreview;
-
-
-
-FOUNDATION_EXPORT NSString *const LKLinkPreviewKitErrorDomain;
-
-enum {
-    LKLinkPreviewKitErrorBadURL = 100
-};
-
-typedef void (^LKLinkPreviewKitHandler)(LKLinkPreview *preview, NSError *error);
-
-
-
-@interface LKLinkPreviewKit : NSObject
-
-+ (void)linkPreviewFromURL:(NSURL *)URL completionHandler:(LKLinkPreviewKitHandler)handler;
-
-@end
+#import "LKLinkPreviewKitErrors.h"
+#import "LKLinkPreview.h"
+#import "LKLinkPreviewReader.h"

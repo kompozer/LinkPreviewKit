@@ -67,9 +67,11 @@
 		A17064C63709F88F62F9CD69 /* Pods-Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		AC04696818619B18602DCC24 /* LinkPreviewKit.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LinkPreviewKit.podspec; path = ../LinkPreviewKit.podspec; sourceTree = "<group>"; };
 		BABCB8281AD9247700AE97E1 /* LKLinkPreviewKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LKLinkPreviewKit.h; path = ../../Pod/Classes/LKLinkPreviewKit.h; sourceTree = "<group>"; };
-		BABCB8291AD9247700AE97E1 /* LKLinkPreviewKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = LKLinkPreviewKit.m; path = ../../Pod/Classes/LKLinkPreviewKit.m; sourceTree = "<group>"; };
 		BAD3F3301AD922D10022466C /* LKLinkPreview.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LKLinkPreview.h; path = ../../Pod/Classes/LKLinkPreview.h; sourceTree = "<group>"; };
 		BAD3F3311AD922D10022466C /* LKLinkPreview.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = LKLinkPreview.m; path = ../../Pod/Classes/LKLinkPreview.m; sourceTree = "<group>"; };
+		BAF8CD1D1ADB9F400035DC2E /* LKLinkPreviewReader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LKLinkPreviewReader.h; path = ../../Pod/Classes/LKLinkPreviewReader.h; sourceTree = "<group>"; };
+		BAF8CD1E1ADB9F400035DC2E /* LKLinkPreviewReader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = LKLinkPreviewReader.m; path = ../../Pod/Classes/LKLinkPreviewReader.m; sourceTree = "<group>"; };
+		BAF8CD1F1ADBA0F90035DC2E /* LKLinkPreviewKitErrors.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LKLinkPreviewKitErrors.h; path = ../../Pod/Classes/LKLinkPreviewKitErrors.h; sourceTree = "<group>"; };
 		C506D3052251C0F774FD153C /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -189,7 +191,9 @@
 				BAD3F3301AD922D10022466C /* LKLinkPreview.h */,
 				BAD3F3311AD922D10022466C /* LKLinkPreview.m */,
 				BABCB8281AD9247700AE97E1 /* LKLinkPreviewKit.h */,
-				BABCB8291AD9247700AE97E1 /* LKLinkPreviewKit.m */,
+				BAF8CD1D1ADB9F400035DC2E /* LKLinkPreviewReader.h */,
+				BAF8CD1E1ADB9F400035DC2E /* LKLinkPreviewReader.m */,
+				BAF8CD1F1ADBA0F90035DC2E /* LKLinkPreviewKitErrors.h */,
 			);
 			name = "Pod classes";
 			sourceTree = "<group>";

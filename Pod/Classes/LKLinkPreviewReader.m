@@ -1,12 +1,12 @@
 //
-//  LKLinkPreviewKit.m
+//  LKLinkPreviewReader.m
 //  LinkPreviewKit
 //
-//  Created by Andreas Kompanez on 11.04.15.
+//  Created by Andreas Kompanez on 13.04.15.
 //  Copyright (c) 2015 Andreas Kompanez. All rights reserved.
 //
 
-#import "LKLinkPreviewKit.h"
+#import "LKLinkPreviewReader.h"
 
 #import "LKLinkPreview.h"
 #import <HTMLReader/HTMLReader.h>
@@ -19,41 +19,13 @@ static NSString *const LKHTMLElementMeta = @"meta";
 static NSString *const LKHTMLAttributeContent = @"content";
 static NSString *const LKHTMLAttributeProperty = @"property";
 
+@interface LKLinkPreviewHTMLReader : NSObject
 
+- (void)linkPreviewFromHTMLDocument:(HTMLDocument *)document completionHandler:(LKLinkPreviewKitHandler)handler;
 
-@implementation LKLinkPreviewKit
+@end
 
-+ (void)linkPreviewFromURL:(NSURL *)URL completionHandler:(LKLinkPreviewKitHandler)handler
-{
-    NSURLSession *session = [NSURLSession sharedSession];
-    [[session dataTaskWithURL:URL completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        NSInteger statusCode = 404;
-        if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
-            statusCode = [(NSHTTPURLResponse *)response statusCode];
-        }
-        if (error || statusCode != 200) {
-            if (statusCode != 200 && error == nil) {
-                error = [NSError errorWithDomain:LKLinkPreviewKitErrorDomain code:LKLinkPreviewKitErrorBadURL userInfo:nil];
-            }
-            if (handler) {
-                handler(nil, error);
-            }
-            return;
-        }
-        
-        NSString *contentType = nil;
-        if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
-            NSDictionary *headers = [(NSHTTPURLResponse *)response allHeaderFields];
-            contentType = headers[@"Content-Type"];
-        }
-        HTMLDocument *document = [HTMLDocument documentWithData:data
-                                          contentTypeHeader:contentType];
-        LKLinkPreviewKit *previewKit = [LKLinkPreviewKit new];
-        [previewKit linkPreviewFromHTMLDocument:document completionHandler:handler];
-    }] resume];
-}
-
-#pragma mark - Private
+@implementation LKLinkPreviewHTMLReader
 
 - (void)linkPreviewFromHTMLDocument:(HTMLDocument *)document completionHandler:(LKLinkPreviewKitHandler)handler
 {
@@ -91,3 +63,40 @@ static NSString *const LKHTMLAttributeProperty = @"property";
 }
 
 @end
+
+
+@implementation LKLinkPreviewReader
+
++ (void)linkPreviewFromURL:(NSURL *)URL completionHandler:(LKLinkPreviewKitHandler)handler
+{
+    NSURLSession *session = [NSURLSession sharedSession];
+    [[session dataTaskWithURL:URL completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        NSInteger statusCode = 404;
+        if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
+            statusCode = [(NSHTTPURLResponse *)response statusCode];
+        }
+        if (error || statusCode != 200) {
+            if (statusCode != 200 && error == nil) {
+                error = [NSError errorWithDomain:LKLinkPreviewKitErrorDomain code:LKLinkPreviewKitErrorBadURL userInfo:nil];
+            }
+            if (handler) {
+                handler(nil, error);
+            }
+            return;
+        }
+        
+        NSString *contentType = nil;
+        if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
+            NSDictionary *headers = [(NSHTTPURLResponse *)response allHeaderFields];
+            contentType = headers[@"Content-Type"];
+        }
+        HTMLDocument *document = [HTMLDocument documentWithData:data
+                                              contentTypeHeader:contentType];
+        LKLinkPreviewHTMLReader *htmlReader = [LKLinkPreviewHTMLReader new];
+        [htmlReader linkPreviewFromHTMLDocument:document completionHandler:handler];
+    }] resume];
+}
+
+@end
+
+

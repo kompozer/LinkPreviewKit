@@ -9,7 +9,8 @@
 #import "ENViewController.h"
 
 #import "LKLinkPreviewKit.h"
-#import "LKLinkPreview.h"
+
+
 
 @interface ENViewController ()
 
@@ -43,7 +44,7 @@
         return;
     }
     
-    [LKLinkPreviewKit linkPreviewFromURL:URL completionHandler:^(LKLinkPreview *preview, NSError *error) {
+    [LKLinkPreviewReader linkPreviewFromURL:URL completionHandler:^(LKLinkPreview *preview, NSError *error) {
         if (preview && ! error) {
             self.previewTextView.text = [preview description];
         }

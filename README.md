@@ -8,6 +8,22 @@
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
+```objc
+
+#import "LKLinkPreviewKit.h"
+
+[LKLinkPreviewReader linkPreviewFromURL:URL completionHandler:^(LKLinkPreview *preview, NSError *error) {
+    if (preview && ! error) {
+        NSLog(@"title: %@", preview.title);
+        NSLog(@"type: %@", preview.type);
+        NSLog(@"URL: %@", preview.URL);
+        NSLog(@"imageURL: %@", preview.imageURL);
+        NSLog(@"linkDescription: %@", preview.linkDescription);
+    }
+}];
+
+```
+
 ## Requirements
 
 ## Installation

@@ -49,9 +49,7 @@ static NSString *const LKHTMLAttributeProperty = @"property";
         HTMLDocument *document = [HTMLDocument documentWithData:data
                                           contentTypeHeader:contentType];
         LKLinkPreviewKit *previewKit = [LKLinkPreviewKit new];
-        dispatch_sync(dispatch_get_main_queue(), ^{
-            [previewKit linkPreviewFromHTMLDocument:document completionHandler:handler];
-        });
+        [previewKit linkPreviewFromHTMLDocument:document completionHandler:handler];
     }] resume];
 }
 
@@ -86,7 +84,9 @@ static NSString *const LKHTMLAttributeProperty = @"property";
     }
     
     if (handler) {
-        handler(preview, nil);
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            handler(preview, nil);
+        });
     }
 }
 

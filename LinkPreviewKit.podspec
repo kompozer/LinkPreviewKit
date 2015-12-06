@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "LinkPreviewKit"
-  s.version          = "0.3.0"
+  s.version          = "0.3.1"
   s.summary          = "Link preview kit"
   s.description      = <<-DESC
                        Library to fetch the social media meta tag information from a website URL. See [http://moz.com/blog/meta-data-templates-123](http://moz.com/blog/meta-data-templates-123)

@@ -44,9 +44,13 @@
         return;
     }
     
-    [LKLinkPreviewReader linkPreviewFromURL:URL completionHandler:^(LKLinkPreview *preview, NSError *error) {
-        if (preview && ! error) {
-            self.previewTextView.text = [preview description];
+    [LKLinkPreviewReader linkPreviewFromURL:URL completionHandler:^(NSArray *previews, NSError *error) {
+        if (previews.count > 0  && ! error) {
+            NSMutableString *text = [NSMutableString new];
+            for (LKLinkPreview *preview in previews) {
+                [text appendFormat:@"%@\n", [preview description]];
+            }
+            self.previewTextView.text = text;
         }
         else {
             self.previewTextView.text = @"Error";

@@ -14,7 +14,7 @@
 
 
 
-typedef void (^LKLinkPreviewKitHandler)(LKLinkPreview *preview, NSError *error);
+typedef void (^LKLinkPreviewKitHandler)(NSArray *previews, NSError *error);
 
 @interface LKLinkPreviewReader : NSObject
 

@@ -56,9 +56,7 @@ static NSString *const LKHTMLAttributeProperty = @"property";
     }
     
     if (handler) {
-        dispatch_sync(dispatch_get_main_queue(), ^{
-            handler(preview, nil);
-        });
+        handler(@[preview], nil);
     }
 }
 
@@ -80,7 +78,9 @@ static NSString *const LKHTMLAttributeProperty = @"property";
                 error = [NSError errorWithDomain:LKLinkPreviewKitErrorDomain code:LKLinkPreviewKitErrorBadURL userInfo:nil];
             }
             if (handler) {
-                handler(nil, error);
+                dispatch_sync(dispatch_get_main_queue(), ^{
+                    handler(nil, error);
+                });
             }
             return;
         }
@@ -93,7 +93,11 @@ static NSString *const LKHTMLAttributeProperty = @"property";
         HTMLDocument *document = [HTMLDocument documentWithData:data
                                               contentTypeHeader:contentType];
         LKLinkPreviewHTMLReader *htmlReader = [LKLinkPreviewHTMLReader new];
-        [htmlReader linkPreviewFromHTMLDocument:document completionHandler:handler];
+        [htmlReader linkPreviewFromHTMLDocument:document completionHandler:^(NSArray *previews, NSError *error) {
+            dispatch_sync(dispatch_get_main_queue(), ^{
+                handler(previews, error);
+            });
+        }];
     }] resume];
 }
 

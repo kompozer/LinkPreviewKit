@@ -30,13 +30,12 @@
 }
 
 - (void)tearDown {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
     [super tearDown];
     
     self.testHTML = nil;
 }
 
-- (void)testThatTestHTMLLoadsAndIsParsable {
+- (void)testThatTestHTMLLoadsAndIsParseable {
     HTMLDocument *document = [HTMLDocument documentWithString:self.testHTML];
     XCTAssertNotNil(document);
     XCTAssertNotNil(document.rootElement);
@@ -46,21 +45,8 @@
     HTMLDocument *document = [HTMLDocument documentWithString:self.testHTML];
     LKLinkPreviewHTMLReader *htmlReader = [LKLinkPreviewHTMLReader new];
     [htmlReader linkPreviewFromHTMLDocument:document completionHandler:^(NSArray *previews, NSError *error) {
-        XCTAssertTrue(previews.count > 0);
-        
+        XCTAssertTrue(previews.count == 1);
     }];
 }
-
-//- (void)testExample {
-//    // This is an example of a functional test case.
-//    // Use XCTAssert and related functions to verify your tests produce the correct results.
-//}
-//
-//- (void)testPerformanceExample {
-//    // This is an example of a performance test case.
-//    [self measureBlock:^{
-//        // Put the code you want to measure the time of here.
-//    }];
-//}
 
 @end

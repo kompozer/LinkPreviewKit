@@ -12,8 +12,8 @@
 
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *type;
-@property (nonatomic, strong) NSURL *URL;
-@property (nonatomic, strong) NSURL *imageURL;
+@property (nonatomic) NSURL *URL;
+@property (nonatomic) NSURL *imageURL;
 @property (nonatomic, copy) NSString *linkDescription;
 
 @end

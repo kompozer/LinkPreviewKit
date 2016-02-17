@@ -9,58 +9,12 @@
 #import "LKLinkPreviewReader.h"
 
 #import "LKLinkPreview.h"
+#import "LKLinkPreviewHTMLReader.h"
 #import <HTMLReader/HTMLReader.h>
 
 
 NSString *const LKLinkPreviewKitErrorDomain = @"LKLinkPreviewKitErrorDomain";
 
-
-static NSString *const LKHTMLElementMeta = @"meta";
-static NSString *const LKHTMLAttributeContent = @"content";
-static NSString *const LKHTMLAttributeProperty = @"property";
-
-@interface LKLinkPreviewHTMLReader : NSObject
-
-- (void)linkPreviewFromHTMLDocument:(HTMLDocument *)document completionHandler:(LKLinkPreviewKitHandler)handler;
-
-@end
-
-@implementation LKLinkPreviewHTMLReader
-
-- (void)linkPreviewFromHTMLDocument:(HTMLDocument *)document completionHandler:(LKLinkPreviewKitHandler)handler
-{
-    LKLinkPreview *preview = [LKLinkPreview new];
-    NSArray *metaNodes = [document nodesMatchingSelector:LKHTMLElementMeta];
-    for (id meta in metaNodes) {
-        if (! [meta isKindOfClass:[HTMLElement class]]) {
-            continue;
-        }
-        HTMLElement *metaElement = (HTMLElement *)meta;
-        NSString *property = [metaElement.attributes objectForKey:LKHTMLAttributeProperty];
-        NSString *content = [metaElement.attributes objectForKey:LKHTMLAttributeContent];
-        if ([property isEqualToString:@"og:title"]) {
-            preview.title = content;
-        }
-        else if ([property isEqualToString:@"og:type"]) {
-            preview.type = content;
-        }
-        else if ([property isEqualToString:@"og:url"]) {
-            preview.URL = [NSURL URLWithString:content];
-        }
-        else if ([property isEqualToString:@"og:image"]) {
-            preview.imageURL = [NSURL URLWithString:content];
-        }
-        else if ([property isEqualToString:@"og:description"]) {
-            preview.linkDescription = content;
-        }
-    }
-    
-    if (handler) {
-        handler(@[preview], nil);
-    }
-}
-
-@end
 
 
 @implementation LKLinkPreviewReader

@@ -6,7 +6,4 @@ end
 
 target 'Tests', :exclusive => true do
   pod "LinkPreviewKit", :path => "../"
-
-  pod 'Specta'
-  pod 'Expecta'
 end

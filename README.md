@@ -5,7 +5,7 @@
 [![Platform](https://img.shields.io/cocoapods/p/LinkPreviewKit.svg?style=flat)](http://cocoapods.org/pods/LinkPreviewKit)
 
 
-Library to fetch the social media meta tag information from a website URL.
+µLibrary to fetch the social media meta tag information from a website URL.
 
 ## Usage
 

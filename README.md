@@ -1,5 +1,6 @@
 # LinkPreviewKit
 
+[![Build Status](https://travis-ci.org/kompozer/LinkPreviewKit.svg?branch=master)](https://travis-ci.org/kompozer/LinkPreviewKit)
 [![Version](https://img.shields.io/cocoapods/v/LinkPreviewKit.svg?style=flat)](http://cocoapods.org/pods/LinkPreviewKit)
 [![License](https://img.shields.io/cocoapods/l/LinkPreviewKit.svg?style=flat)](http://cocoapods.org/pods/LinkPreviewKit)
 [![Platform](https://img.shields.io/cocoapods/p/LinkPreviewKit.svg?style=flat)](http://cocoapods.org/pods/LinkPreviewKit)

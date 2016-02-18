@@ -38,6 +38,10 @@
 
 - (LKLinkPreview *)fetchOrRegisterNewLinkPreviewByKind:(LKTemplateKind)kind
 {
+    if (kind == LKTemplateKindUndefined) {
+        return nil;
+    }
+    
     NSNumber *key = @(kind);
     LKLinkPreview *preview = [self.registeredPreviews objectForKey:key];
     if (! preview) {

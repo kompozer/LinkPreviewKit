@@ -13,9 +13,9 @@
 @interface LKTemplateLibrary : NSObject
 
 /// Returns all the registered @c LKLinkPreview objects
-@property (nonatomic, readonly) NSArray *allPreviews;
+@property (nonatomic, readonly) NSArray * _Nonnull allPreviews;
 
-- (LKLinkPreview *)fetchOrRegisterNewLinkPreviewByKind:(LKTemplateKind)kind;
+- (LKLinkPreview * _Nullable)fetchOrRegisterNewLinkPreviewByKind:(LKTemplateKind)kind;
 
 - (void)resetRegisteredPreviews;
 

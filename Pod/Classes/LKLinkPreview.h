@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) LKTemplateKind kind;
 @property (nonatomic, copy) NSString * _Nullable title;
 @property (nonatomic, copy) NSString * _Nullable type;
+@property (nonatomic, copy) NSString * _Nullable siteName;
 @property (nonatomic) NSURL * _Nullable URL;
 @property (nonatomic) NSURL * _Nullable imageURL;
 @property (nonatomic, copy) NSString * _Nullable linkDescription;

@@ -8,8 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		29D20A2022924E0FB787BD00 /* libPods-Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 051A10CA141AB60D6E3601A1 /* libPods-Tests.a */; };
+		458F6AFA1C75B4B100CAAD75 /* t1.html in Resources */ = {isa = PBXBuildFile; fileRef = 458F6AF91C75B4B100CAAD75 /* t1.html */; };
+		45BE8E961C75CA28009E4A0C /* LKTemplateLibraryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 45BE8E951C75CA28009E4A0C /* LKTemplateLibraryTests.m */; };
 		45F04C591C747B1700A3FADE /* LKLinkPreviewReaderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F04C581C747B1700A3FADE /* LKLinkPreviewReaderTests.m */; };
-		45F04C5B1C747BB600A3FADE /* input.html in Resources */ = {isa = PBXBuildFile; fileRef = 45F04C5A1C747BB600A3FADE /* input.html */; };
+		45F04C5B1C747BB600A3FADE /* t0.html in Resources */ = {isa = PBXBuildFile; fileRef = 45F04C5A1C747BB600A3FADE /* t0.html */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
@@ -42,8 +44,11 @@
 		1B603EBB072AEBA89C02B396 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		2BF196D820679E10C0F41C26 /* Pods-LinkPreviewKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LinkPreviewKit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LinkPreviewKit/Pods-LinkPreviewKit.debug.xcconfig"; sourceTree = "<group>"; };
 		2F1DF689B0F4F9C2778A816F /* Pods-LinkPreviewKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LinkPreviewKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-LinkPreviewKit/Pods-LinkPreviewKit.release.xcconfig"; sourceTree = "<group>"; };
+		458F6AF91C75B4B100CAAD75 /* t1.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = t1.html; sourceTree = "<group>"; };
+		458F6AFB1C75BF2800CAAD75 /* LKTypes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = LKTypes.m; path = ../../Pod/Classes/LKTypes.m; sourceTree = "<group>"; };
+		45BE8E951C75CA28009E4A0C /* LKTemplateLibraryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKTemplateLibraryTests.m; sourceTree = "<group>"; };
 		45F04C581C747B1700A3FADE /* LKLinkPreviewReaderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKLinkPreviewReaderTests.m; sourceTree = "<group>"; };
-		45F04C5A1C747BB600A3FADE /* input.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = input.html; sourceTree = "<group>"; };
+		45F04C5A1C747BB600A3FADE /* t0.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = t0.html; sourceTree = "<group>"; };
 		45F04C5C1C74811C00A3FADE /* LKLinkPreviewHTMLReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LKLinkPreviewHTMLReader.h; path = ../../Pod/Classes/LKLinkPreviewHTMLReader.h; sourceTree = "<group>"; };
 		45F04C5D1C74811C00A3FADE /* LKLinkPreviewHTMLReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LKLinkPreviewHTMLReader.m; path = ../../Pod/Classes/LKLinkPreviewHTMLReader.m; sourceTree = "<group>"; };
 		45F04C631C74BF0B00A3FADE /* LKTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LKTypes.h; path = ../../Pod/Classes/LKTypes.h; sourceTree = "<group>"; };
@@ -168,7 +173,7 @@
 			children = (
 				6003F5B6195388D20070C39A /* Supporting Files */,
 				45F04C581C747B1700A3FADE /* LKLinkPreviewReaderTests.m */,
-				45F04C5A1C747BB600A3FADE /* input.html */,
+				45BE8E951C75CA28009E4A0C /* LKTemplateLibraryTests.m */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -176,6 +181,8 @@
 		6003F5B6195388D20070C39A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				45F04C5A1C747BB600A3FADE /* t0.html */,
+				458F6AF91C75B4B100CAAD75 /* t1.html */,
 				6003F5B7195388D20070C39A /* Tests-Info.plist */,
 				6003F5B8195388D20070C39A /* InfoPlist.strings */,
 				606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */,
@@ -197,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				45F04C631C74BF0B00A3FADE /* LKTypes.h */,
+				458F6AFB1C75BF2800CAAD75 /* LKTypes.m */,
 				BAD3F3301AD922D10022466C /* LKLinkPreview.h */,
 				BAD3F3311AD922D10022466C /* LKLinkPreview.m */,
 				BABCB8281AD9247700AE97E1 /* LKLinkPreviewKit.h */,
@@ -330,8 +338,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				458F6AFA1C75B4B100CAAD75 /* t1.html in Resources */,
 				6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */,
-				45F04C5B1C747BB600A3FADE /* input.html in Resources */,
+				45F04C5B1C747BB600A3FADE /* t0.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -445,6 +454,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45BE8E961C75CA28009E4A0C /* LKTemplateLibraryTests.m in Sources */,
 				45F04C591C747B1700A3FADE /* LKLinkPreviewReaderTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

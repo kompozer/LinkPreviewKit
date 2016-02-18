@@ -14,8 +14,10 @@
 #import <HTMLReader/HTMLReader.h>
 
 static NSString *const LKHTMLElementMeta = @"meta";
+static NSString *const LKHTMLElementTitle = @"title";
 static NSString *const LKHTMLAttributeContent = @"content";
 static NSString *const LKHTMLAttributeProperty = @"property";
+static NSString *const LKHTMLAttributeName = @"name";
 
 @interface LKLinkPreview (LKLinkPreviewHTMLReader)
 
@@ -34,13 +36,13 @@ static NSString *const LKHTMLAttributeProperty = @"property";
 
 @interface LKTemplateMatcher : NSObject
 
-- (LKTemplateKind)matchingTemplateByProperty:(NSString *)property;
+- (LKTemplateKind)matchingTemplateByKey:(NSString *)property;
 
 @end
 
 @implementation LKTemplateMatcher
 
-- (LKTemplateKind)matchingTemplateByProperty:(NSString *)property
+- (LKTemplateKind)matchingTemplateByKey:(NSString *)property
 {
     if ([property hasPrefix:@"og:"]) {
         return LKTemplateKindOpenGraph;
@@ -48,8 +50,57 @@ static NSString *const LKHTMLAttributeProperty = @"property";
     if ([property hasPrefix:@"twitter:"]) {
         return LKTemplateKindTwitterCard;
     }
+    if ([property isEqualToString:@"description"]) {
+        return LKTemplateKindStandard;
+    }
     
     return LKTemplateKindUndefined;
+}
+
+@end
+
+@interface LKMetaKeyValuePair : NSObject
+
+@property (nonatomic, copy) NSString *key;
+@property (nonatomic, copy) NSString *value;
+
+@end
+
+@implementation LKMetaKeyValuePair
+
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"<%@: %p> key '%@'; value '%@'", [self class], self, self.key, self.value];
+}
+
+@end
+
+@interface LKLKMetaKeyValuePairParser : NSObject
+
+- (LKMetaKeyValuePair * _Nonnull)parse:(HTMLElement *)element;
+
+@end
+
+@implementation LKLKMetaKeyValuePairParser
+
+- (LKMetaKeyValuePair *)parse:(HTMLElement *)element
+{
+    NSString *property = [element.attributes objectForKey:LKHTMLAttributeProperty];
+    NSString *name = [element.attributes objectForKey:LKHTMLAttributeName];
+    NSString *content = [element.attributes objectForKey:LKHTMLAttributeContent];
+    NSString *key = nil;
+    
+    if (property.length > 0 && name.length == 0) {
+        key = property;
+    }
+    else {
+        key = name;
+    }
+    LKMetaKeyValuePair *pair = [LKMetaKeyValuePair new];
+    pair.key = key;
+    pair.value = content;
+    
+    return pair;
 }
 
 @end
@@ -62,23 +113,29 @@ static NSString *const LKHTMLAttributeProperty = @"property";
     NSArray *metaNodes = [document nodesMatchingSelector:LKHTMLElementMeta];
     LKTemplateLibrary *library = [LKTemplateLibrary new];
     LKTemplateMatcher *matcher = [LKTemplateMatcher new];
+    LKLKMetaKeyValuePairParser *keyValueParser = [LKLKMetaKeyValuePairParser new];
 
     for (id meta in metaNodes) {
         if (! [meta isKindOfClass:[HTMLElement class]]) {
             continue;
         }
         HTMLElement *metaElement = (HTMLElement *)meta;
-        NSString *property = [metaElement.attributes objectForKey:LKHTMLAttributeProperty];
-        NSString *content = [metaElement.attributes objectForKey:LKHTMLAttributeContent];
-        
-        LKTemplateKind kind = [matcher matchingTemplateByProperty:property];
+        LKMetaKeyValuePair *keyValuePair = [keyValueParser parse:metaElement];
+        LKTemplateKind kind = [matcher matchingTemplateByKey:keyValuePair.key];
         
         if (kind == LKTemplateKindUndefined) {
             continue;
         }
         
         LKLinkPreview *preview = [library fetchOrRegisterNewLinkPreviewByKind:kind];
-        [preview setContent:content forProperty:property];
+        [preview setContent:keyValuePair.value forProperty:keyValuePair.key];
+    }
+    
+    // Check for Standard Template
+    LKLinkPreview *standardTemplatePreview = [library fetchOrRegisterNewLinkPreviewByKind:LKTemplateKindStandard];
+    if (standardTemplatePreview) {
+        HTMLElement *titleElement = [document nodesMatchingSelector:LKHTMLElementTitle].firstObject;
+        standardTemplatePreview.title = titleElement.textContent;
     }
     
     if (handler) {

@@ -8,7 +8,9 @@
 
 typedef NS_ENUM(NSInteger, LKTemplateKind) {
     LKTemplateKindUndefined,
-    LKTemplateKindDefault, // <title> and meta description
+    LKTemplateKindStandard, // <title> and meta description
     LKTemplateKindTwitterCard,
     LKTemplateKindOpenGraph
 };
+
+extern NSString *StringFromLKTemplateKind(LKTemplateKind kind);

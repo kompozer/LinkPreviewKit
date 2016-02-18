@@ -5,7 +5,9 @@
 [![Platform](https://img.shields.io/cocoapods/p/LinkPreviewKit.svg?style=flat)](http://cocoapods.org/pods/LinkPreviewKit)
 
 
-µLibrary to fetch the social media meta tag information from a website URL.
+µLibrary to fetch the social media meta tag information from a website URL. 
+
+Supports Meta Tags for Standard Template (*title* and *description*), TwitterCard (*twitter:*) and OpenGraph (*og:*). 
 
 ## Usage
 

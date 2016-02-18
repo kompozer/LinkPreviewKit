@@ -35,7 +35,7 @@ static NSString *LKNormalizedProperyName(NSString *property, LKTemplateKind kind
     if ([property hasPrefix:namespace]) {
         return [property stringByReplacingOccurrencesOfString:namespace withString:@""];
     }
-    return namespace;
+    return property;
 }
 
 @interface LKLinkPreview ()
@@ -75,6 +75,9 @@ static NSString *LKNormalizedProperyName(NSString *property, LKTemplateKind kind
     else if ([normalized isEqualToString:@"image"]) {
         self.imageURL = [NSURL URLWithString:content];
     }
+    else if ([normalized isEqualToString:@"site_name"]) {
+        self.siteName = content;
+    }
     else if ([normalized isEqualToString:@"description"]) {
         self.linkDescription = content;
     }
@@ -83,7 +86,9 @@ static NSString *LKNormalizedProperyName(NSString *property, LKTemplateKind kind
 - (NSString *)description
 {
     NSMutableString *body = [NSMutableString new];
+    [body appendFormat:@"kind: '%@'\n", StringFromLKTemplateKind(self.kind)];
     [body appendFormat:@"title: '%@'\n", self.title];
+    [body appendFormat:@"siteName: '%@'\n", self.siteName];
     [body appendFormat:@"type: '%@'\n", self.type];
     [body appendFormat:@"URL: '%@'\n", [self.URL absoluteString]];
     [body appendFormat:@"imageURL: '%@'\n", [self.imageURL absoluteString]];

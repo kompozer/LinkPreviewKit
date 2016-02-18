@@ -15,7 +15,7 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 #import "LKLinkPreviewKit.h"
 
-[LKLinkPreviewReader linkPreviewFromURL:URL completionHandler:^(LKLinkPreview *preview, NSError *error) {
+[LKLinkPreviewReader linkPreviewFromURL:URL completionHandler:^(NSArray *previews, NSError *error) {
     if (previews.count > 0  && ! error) {
         for (LKLinkPreview *preview in previews) {
             NSLog(@"title: %@", preview.title);
